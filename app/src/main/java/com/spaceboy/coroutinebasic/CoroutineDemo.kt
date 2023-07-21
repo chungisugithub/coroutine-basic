@@ -1,6 +1,7 @@
 package com.spaceboy.coroutinebasic
 
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.lang.Thread.sleep
 
@@ -17,6 +18,6 @@ fun task1() {
 }
 
 suspend fun task2() {
-    sleep(1000L)
+    delay(1000L)
     print("World!")
 }
