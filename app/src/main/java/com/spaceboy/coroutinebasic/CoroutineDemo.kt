@@ -2,6 +2,7 @@ package com.spaceboy.coroutinebasic
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.lang.Thread.sleep
 
 fun main() {
     GlobalScope.launch {
@@ -15,5 +16,6 @@ fun task1() {
 }
 
 suspend fun task2() {
+    sleep(1000L)
     print("World!")
 }
