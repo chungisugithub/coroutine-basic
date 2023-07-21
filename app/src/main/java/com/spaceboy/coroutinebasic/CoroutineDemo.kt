@@ -9,6 +9,7 @@ fun main() {
         task2()
     }
     task1()
+    Thread.sleep(2000L)
 }
 
 fun task1() {
