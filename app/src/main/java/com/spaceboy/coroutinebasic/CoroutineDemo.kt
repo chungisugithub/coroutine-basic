@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 fun main() {
 
     repeat(50) {
-        CoroutineScope(Dispatchers.Default).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             println(Thread.currentThread().name)
         }
     }
