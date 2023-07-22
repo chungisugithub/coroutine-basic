@@ -32,6 +32,7 @@ class MainActivity : ComponentActivity() {
                     LaunchedEffect(key1 = true) {
                         scope.launch {
                             Log.d("CoroutineName", this.coroutineContext.toString())
+                            Log.d("CoroutineName", Thread.currentThread().name)
                         }
                     }
 
