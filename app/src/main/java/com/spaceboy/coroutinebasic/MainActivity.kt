@@ -21,9 +21,7 @@ class MainActivity : ComponentActivity() {
     val scope = CoroutineScope(CoroutineName("MyScope"))
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LaunchedEffect(key1 = true) {
 
-        }
         setContent {
             CoroutineBasicTheme {
                 // A surface container using the 'background' color from the theme
@@ -31,9 +29,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    scope.launch {
-                        Log.d("Coroutine", this.coroutineContext.toString())
+                    LaunchedEffect(key1 = true) {
+                        scope.launch {
+                            Log.d("Coroutine", this.coroutineContext.toString())
+                        }
                     }
+
                     Greeting("Android")
                 }
             }
