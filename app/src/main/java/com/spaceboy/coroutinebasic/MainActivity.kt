@@ -15,10 +15,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.spaceboy.coroutinebasic.ui.theme.CoroutineBasicTheme
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    val scope = CoroutineScope(CoroutineName("MyScope"))
+    val scope = MainScope()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
