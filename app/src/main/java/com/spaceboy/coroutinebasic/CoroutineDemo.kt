@@ -17,3 +17,6 @@ fun main() {
     Thread.sleep(1000L)
 }
 
+suspend fun myOwnSuspendingFunc() {
+    delay(1000) // do something...
+}

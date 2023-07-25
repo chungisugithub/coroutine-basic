@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.spaceboy.coroutinebasic.databinding.FragmentFirstBinding
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
-
+    private val scope = CoroutineScope(CoroutineName("MyScope"))
     private var _binding: FragmentFirstBinding? = null
 
     // This property is only valid between onCreateView and
