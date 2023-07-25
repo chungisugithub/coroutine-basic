@@ -36,9 +36,13 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        println("Thread Name : ${Thread.currentThread().name}")
         scope.launch {
+            println("Thread Name : ${Thread.currentThread().name}")
+
             val job1 = launch {
+                println("Thread Name : ${Thread.currentThread().name}")
+
                 while(true) {
                     Log.d(TAG, "onViewCreated: Job 1 Running...")
                 }
