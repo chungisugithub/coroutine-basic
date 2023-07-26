@@ -7,17 +7,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.spaceboy.coroutinebasic.databinding.FragmentFirstBinding
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
-    private val scope = CoroutineScope(CoroutineName("MyScope"))
+    private val scope = CoroutineScope(Dispatchers.IO + CoroutineName("MyScope"))
     private var _binding: FragmentFirstBinding? = null
 
     // This property is only valid between onCreateView and
@@ -26,7 +30,7 @@ class FirstFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
@@ -37,17 +41,14 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         println("Thread Name : ${Thread.currentThread().name}")
-        scope.launch {
-            println("Thread Name : ${Thread.currentThread().name}")
 
-            val job1 = launch {
-                println("Thread Name : ${Thread.currentThread().name}")
-
-                while(true) {
-                    Log.d(TAG, "onViewCreated: Job 1 Running...")
-                }
+        lifecycleScope.launch {
+            while (true) {
+                delay(1000L)
+                Log.d(TAG, "Running...")
             }
         }
+
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
@@ -57,5 +58,25 @@ class FirstFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onPause() {
+        Log.d(TAG, "onPause")
+        super.onPause()
+    }
+
+    override fun onStop() {
+        Log.d(TAG, "onStop")
+        super.onStop()
+    }
+
+    override fun onResume() {
+        Log.d(TAG, "onResume")
+        super.onResume()
+    }
+
+    override fun onDestroy() {
+        Log.d(TAG, "onDestroy")
+        super.onDestroy()
     }
 }
