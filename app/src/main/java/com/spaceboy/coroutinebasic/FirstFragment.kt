@@ -46,7 +46,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         println("Thread Name : ${Thread.currentThread().name}")
 
-        scope.launch {
+        val mainJob = scope.launch {
             val job1 = launch {
                 while (true) {
                     yield()
@@ -62,6 +62,7 @@ class FirstFragment : Fragment() {
             Log.d(TAG, "Job 2 Canceled")
         }
 
+        mainJob.cancelAndJoin()
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
