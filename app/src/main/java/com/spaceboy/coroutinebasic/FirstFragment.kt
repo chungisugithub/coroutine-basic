@@ -64,6 +64,7 @@ class FirstFragment : Fragment() {
         }
 
         runBlocking {
+            delay(1000)
             mainJob.cancelAndJoin()
         }
 
