@@ -19,6 +19,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.yield
 
 /**
@@ -62,7 +63,9 @@ class FirstFragment : Fragment() {
             Log.d(TAG, "Job 2 Canceled")
         }
 
-        mainJob.cancelAndJoin()
+        runBlocking {
+            mainJob.cancelAndJoin()
+        }
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
