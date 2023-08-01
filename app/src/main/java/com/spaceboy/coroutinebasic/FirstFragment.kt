@@ -18,6 +18,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.yield
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -47,7 +48,7 @@ class FirstFragment : Fragment() {
         scope.launch {
             val job1 = launch {
                 while(true) {
-                    delay(50)
+                    yield()
                     Log.d(TAG, "Job 1 Running...")
                 }
             }
