@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
-    private val scope = CoroutineScope(Dispatchers.IO + CoroutineName("MyScope"))
+    private val scope = CoroutineScope(CoroutineName("MyScope"))
     private var _binding: FragmentFirstBinding? = null
 
     // This property is only valid between onCreateView and
@@ -34,18 +34,19 @@ class FirstFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        return binding.root
 
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         println("Thread Name : ${Thread.currentThread().name}")
 
-        lifecycleScope.launch {
-            while (true) {
-                delay(1000L)
-                Log.d(TAG, "Running...")
+        scope.launch {
+            val job1 = launch {
+                while(true) {
+                    Log.d(TAG, "Job 1 Running...")
+                }
             }
         }
 
