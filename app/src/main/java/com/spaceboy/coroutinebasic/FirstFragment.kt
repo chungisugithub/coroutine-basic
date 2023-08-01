@@ -48,6 +48,9 @@ class FirstFragment : Fragment() {
                     Log.d(TAG, "Job 1 Running...")
                 }
             }
+            Log.d(TAG, "Cancelling...")
+            job1.cancel()
+            Log.d(TAG, "Job 1 Canceled")
         }
 
 
