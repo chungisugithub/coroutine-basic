@@ -50,6 +50,7 @@ class FirstFragment : Fragment() {
             }
             Log.d(TAG, "Cancelling...")
             job1.cancel()
+            job1.join()
             Log.d(TAG, "Job 1 Canceled")
         }
 
