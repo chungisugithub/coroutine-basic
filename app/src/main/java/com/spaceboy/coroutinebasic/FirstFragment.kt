@@ -47,7 +47,7 @@ class FirstFragment : Fragment() {
         scope.launch {
             val job1 = launch {
                 while(true) {
-                    ensureActive()
+                    delay(50)
                     Log.d(TAG, "Job 1 Running...")
                 }
             }
