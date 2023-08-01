@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 /**
@@ -44,10 +45,11 @@ class FirstFragment : Fragment() {
 
         scope.launch {
             val job1 = launch {
-                while(true) {
+                while(isActive) {
                     Log.d(TAG, "Job 1 Running...")
                 }
             }
+            delay(1000)
             Log.d(TAG, "Cancelling...")
             job1.cancel()
             job1.join()
