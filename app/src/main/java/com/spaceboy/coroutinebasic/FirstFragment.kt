@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
@@ -45,7 +46,8 @@ class FirstFragment : Fragment() {
 
         scope.launch {
             val job1 = launch {
-                while(isActive) {
+                while(true) {
+                    ensureActive()
                     Log.d(TAG, "Job 1 Running...")
                 }
             }
