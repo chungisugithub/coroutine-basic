@@ -65,7 +65,9 @@ class FirstFragment : Fragment() {
 
         runBlocking {
             delay(1000)
+            Log.d(TAG, "Cancelling...")
             mainJob.cancelAndJoin()
+            Log.d(TAG, "mainJob Canceled")
         }
 
         binding.buttonFirst.setOnClickListener {
